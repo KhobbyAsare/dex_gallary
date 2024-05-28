@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Dex-Gallery' title`, () => {
+  it(`should have the 'New_Angular_Space' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Dex-Gallery');
+    expect(app.title).toEqual('New_Angular_Space');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Dex-Gallery');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, New_Angular_Space');
   });
 });
