@@ -1,0 +1,40 @@
+<section>
+  <div class="container">
+    <div class="left-side">
+      <header>
+        <h1 class="brand">
+          {{ brandName }}
+        </h1>
+      </header>
+
+      <div class="content">
+        <div class="breadcrum">
+          <div class="btns-wrapper">
+            <button
+              (click)="changeCurrentComponent('signin')"
+              [style.backgroundColor]="
+                currentComponet === 'signin' ? 'white' : 'transparent'
+              "
+            >
+              SignIn
+            </button>
+            <button
+              (click)="changeCurrentComponent('signup')"
+              [style.backgroundColor]="
+                currentComponet === 'signup' ? 'white' : 'transparent'
+              "
+            >
+              SignUp
+            </button>
+          </div>
+        </div>
+
+        @if (currentComponet === 'signin') {
+        <app-sign-in></app-sign-in>
+        }
+      </div>
+    </div>
+
+    <div class="right-side"><h1>bg</h1></div>
+  </div>
+</section>
