@@ -1,15 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { BrandNameSignalService } from '../../../services/brandNameSignal/brand-name-signal.service';
-import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-signup',
   standalone: true,
-  imports: [RouterModule],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss',
+  imports: [],
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
 })
-export class SignInComponent {
+export class SignupComponent {
   public brandName = inject(BrandNameSignalService).brand_name();
 
   inputsCurrState: number = 1;

@@ -2,7 +2,36 @@
   <div class="container">
     <div class="form-wrapper">
       <form>
-        @if(inputsCurrState === 1){
+        @if (inputsCurrState === 1) {
+        <div class="input-div">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 50 50"
+          >
+            <g
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path
+                stroke="#344054"
+                d="M18.75 31.25h12.5a10.417 10.417 0 0 1 10.417 10.417a2.083 2.083 0 0 1-2.084 2.083H10.417a2.083 2.083 0 0 1-2.084-2.083A10.417 10.417 0 0 1 18.75 31.25"
+              />
+              <path
+                stroke="#306cfe"
+                d="M25 22.917A8.333 8.333 0 1 0 25 6.25a8.333 8.333 0 0 0 0 16.667"
+              />
+            </g>
+          </svg>
+          <div class="holder">
+            <label for="username">Username</label>
+            <input type="username" placeholder="eg: Micheal Ross" />
+          </div>
+        </div>
+        }@else if (inputsCurrState === 2) {
         <div class="input-div">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +49,7 @@
             <input type="email" placeholder="example@gmail.com" />
           </div>
         </div>
-        } @if(inputsCurrState === 2){
+
         <div class="input-div">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,16 +73,20 @@
             <input type="password" placeholder="*****" />
           </div>
         </div>
-        } @if (inputsCurrState !== 2) {
+        }
+
+        <!-- .. -->
+
+        @if (inputsCurrState === 1) {
         <button class="continue-btn" (click)="setNewInputsState(2, $event)">
           Continue
         </button>
-        }@else if (inputsCurrState === 2) {
+        } @else if (inputsCurrState === 2) {
         <div class="btns-wrapper">
           <button class="continue-btn" (click)="setNewInputsState(1, $event)">
             previous
           </button>
-          <button class="continue-btn">Submit</button>
+          <button class="continue-btn">Register</button>
         </div>
         }
       </form>
