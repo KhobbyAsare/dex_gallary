@@ -35,17 +35,10 @@
 
       <!-- tags -->
       <div class="tags">
-        <span (click)="tagsValues('People')">People</span>
-        <span (click)="tagsValues('Trendy')">Trendy</span>
-        <span (click)="tagsValues('Designs')">Designs</span>
-        <span (click)="tagsValues('Communication')">Communication</span>
-        <span (click)="tagsValues('Smart')">Smart</span>
-        <span (click)="tagsValues('Events')">Events</span>
-        <span (click)="tagsValues('Games')">Games</span>
-        <span (click)="tagsValues('Background')">Background</span>
-        <span (click)="tagsValues('WorkSpace')">WorkSpace</span>
-        <span (click)="tagsValues('Devices')">Devices</span>
-        <span (click)="tagsValues('Program Languages')">Program Languages</span>
+        @for (tag of tags; track $index) {
+
+        <span (click)="tagsValues(tag)">{{tag}}</span>
+        } 
       </div>
     </div>
   </header>
