@@ -1,0 +1,57 @@
+<section>
+  <div class="container">
+    <div class="left-side">
+      <header>
+        <h1 class="brand" routerLink="/">
+          {{ brandName }}
+        </h1>
+      </header>
+
+      <div class="content">
+        @if(currentComponet === 'signin'){
+            <div class="greetings">
+            <h3>{{headerText[0].header}}</h3>
+            <p>{{headerText[0].pText}}</p>
+        </div>
+        } @else if(currentComponet === 'signup'){
+            <div class="greetings">
+            <h3>{{headerText[1].header}}</h3>
+            <p>{{headerText[1].pText}}</p>
+        </div>
+        }
+        <div class="breadcrum">
+          <div class="btns-wrapper">
+            <button
+              (click)="changeCurrentComponent('signin')"
+              [style.backgroundColor]="
+                currentComponet === 'signin' ? 'white' : 'transparent'
+              "
+            >
+              SignIn
+            </button>
+            <button
+              (click)="changeCurrentComponent('signup')"
+              [style.backgroundColor]="
+                currentComponet === 'signup' ? 'white' : 'transparent'
+              "
+            >
+              SignUp
+            </button>
+          </div>
+        </div>
+
+        
+
+        @if (currentComponet === 'signin') {
+        <app-sign-in></app-sign-in>
+        }@if (currentComponet === 'signup') {
+            <app-signup></app-signup>
+        }
+      </div>
+    </div>
+
+    <div class="right-side">
+        <img src="../../../assets/Auth/3d-auth.jpg" alt="auth-image">
+    </div>
+  </div>
+</section>
