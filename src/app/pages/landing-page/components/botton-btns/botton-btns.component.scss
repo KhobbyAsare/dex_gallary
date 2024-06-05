@@ -1,25 +1,49 @@
+@import "all-sass-imports";
+
 section {
-  min-height: 40vh;
+  min-height: 10rem;
   width: 100vw;
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 1.25rem 0;
   justify-content: center;
   background: transparent;
-background: -moz-linear-gradient(180deg, transparent 0%, rgba(255,255,255,1) 100%);
-background: -webkit-linear-gradient(180deg, transparent 0%, rgba(255,255,255,1) 100%);
-background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bbe9",endColorstr="#ffffff",GradientType=1);
+  background: -moz-linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94bbe9",endColorstr="#ffffff",GradientType=1);
 
   .container {
-    width: 70%;
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 1.25rem;
     text-align: center;
+    width: 70%;
+
+    @include screen-breakpoints(tablet-portrait) {
+      width: 95%;
+    }
     h2 {
       font-size: 3rem;
       line-height: 4.125rem;
+
+      @include screen-breakpoints(phone) {
+        font-size: 2rem;
+        line-height: 2.125rem;
+        text-align: left;
+      }
     }
   }
 }

@@ -1,0 +1,103 @@
+<div class="upload-image">
+  <header>
+    <div class="container">
+      <div class="logo" routerLink="/">{{ brandName }}</div>
+      <h1>Upload Image</h1>
+    </div>
+  </header>
+  <div class="content">
+    <form (submit)="onSubmit()">
+      <div class="header-content">
+        <h3>Upload Details</h3>
+        <p>
+          The details you provide play a crucial role in crafting your image on
+          our platform, offering a personalized touch that showcases your unique
+          identity. Your input enables us to create a visual representation that
+          not only stands out but also fosters recognition and connection within
+          our vibrant community.
+        </p>
+      </div>
+
+      <textarea
+        name="description"
+        id="description"
+        placeholder="Description"
+        [(ngModel)]="description"
+        required
+        (input)="changeDescription($event)"
+      ></textarea>
+
+      <div class="tag">
+        <p>Select Tags:</p>
+        <div class="tags-holder">
+          @for (tag of tags; track $index) {
+          <span
+            (click)="selectTag(tag)"
+            [style.backgroundColor]="
+              selectedTags.includes(tag.toLowerCase()) ? '#fff' : '#f6f8fa77'
+            "
+            >{{ tag | titlecase }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24px"
+              height="24px"
+              viewBox="0 0 21 21"
+              *ngIf="selectedTags.includes(tag.toLowerCase())"
+              (click)="deSelectTag(tag, $event)"
+            >
+              <path
+                fill="none"
+                stroke="#666666"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m7.5 7.5l6 6m0-6l-6 6"
+              />
+            </svg>
+          </span>
+          }<svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30px"
+            height="30px"
+            viewBox="0 0 24 24"
+            (click)="isTagInput = true"
+          >
+            <g fill="none">
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                fill="#00008b"
+                fill-opacity="0.25"
+              />
+              <path
+                stroke="#00008b"
+                stroke-linecap="square"
+                stroke-linejoin="round"
+                stroke-width="1.2"
+                d="M12 8v8m4-4H8"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      @if (isTagInput) {
+      <input
+        type="text"
+        placeholder="Add to selected tags"
+        (keydown)="getTag($event)"
+        (blur)="isTagInput = false"
+      />
+      }
+
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      <button type="submit" [disabled]="!checkValidity()">Upload</button>
+    </form>
+    <div *ngIf="imageUrl" class="image-preview-holder">
+      <h2>Preview:</h2>
+      <div class="image-wrapper">
+        <img [src]="imageUrl" alt="Uploaded Image" />
+      </div>
+    </div>
+  </div>
+</div>

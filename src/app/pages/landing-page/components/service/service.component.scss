@@ -1,57 +1,90 @@
+@import "all-sass-imports";
+
 section {
   min-height: 70vh;
   width: 100vw;
   display: flex;
   align-items: flex-start;
-  padding: 20px 0;
+  padding: 2.857rem 0;
   justify-content: center;
 
   .container {
     width: 80%;
 
+    @include screen-breakpoints(phone) {
+      width: 100%;
+    }
+
     header {
       text-align: center;
-      width: 80%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      row-gap: 20px;
+      row-gap: 1.429rem;
+      width: 80%;
+
+      @include screen-breakpoints(phone) {
+        width: 95%;
+      }
 
       h2 {
         font-size: 2rem;
         line-height: 2.375rem;
+
+        @include screen-breakpoints(phone) {
+          font-size: 1.7rem;
+          line-height: 2.625rem;
+          text-align: left;
+        }
       }
       p {
         font-size: 1rem;
         line-height: 1.5rem;
+
+        @include screen-breakpoints(phone) {
+          font-size: 1.1rem;
+          text-align: left;
+        }
       }
     }
 
     .content {
       display: flex;
       flex-direction: column;
-      row-gap: 70px;
-      padding: 4rem 0;
+      row-gap: 4.286rem;
+      padding: 2.857rem 0;
+
       .service {
         display: flex;
         align-items: center;
-        column-gap: 30px;
+
+        flex-direction: row;
+        column-gap: 1.429rem;
+
+        @include screen-breakpoints(phone) {
+          flex-direction: column;
+          row-gap: 1.429rem;
+        }
+
         .gif-animation {
-          width: 50%;
-          height: 400px;
-          // background-color: #7ce3c9;
-          border-radius: 8px;
+          height: 25.714rem;
+          border-radius: 0.571rem;
           position: relative;
           overflow: hidden;
           // padding-top: 56.25%; /* 16:9 Aspect Ratio */
           transition: all ease-in-out 600ms;
+          width: 50%;
 
           &:hover {
             transform: rotate(4deg);
           }
 
+          @include screen-breakpoints(phone) {
+            width: 95%;
+          }
+
           iframe {
-            border-radius: 8px;
+            border-radius: 0.571rem;
             width: 100%;
             position: absolute;
             top: 0;
@@ -62,22 +95,32 @@ section {
           }
         }
         .text {
-          width: 50%;
           grid-area: 1 / 11 / auto / span 7;
           -webkit-box-pack: center;
           justify-content: center;
           display: flex;
           flex-direction: column;
-          row-gap: 10px;
+          row-gap: 0.714rem;
+          width: 50%;
+
+          @include screen-breakpoints(phone) {
+            width: 95%;
+          }
 
           h3 {
             font-size: 1.5rem;
-            line-height: 1.875rem;
+
+            @include screen-breakpoints(phone) {
+              font-size: 1.6rem;
+            }
           }
           p {
             font-size: 1rem;
-            line-height: 1.5rem;
             text-align: left;
+
+            @include screen-breakpoints(phone) {
+              font-size: 1.1rem;
+            }
 
             a {
               font-weight: 700;
