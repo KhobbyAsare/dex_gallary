@@ -1,32 +1,49 @@
+@import  "all-sass-imports";
+
+$root-font-size: 16px; // Set the root font size in pixels
+
 section {
   min-height: 200vh;
 
   header {
     background-color: whitesmoke;
     min-height: 200px;
-    padding: 100px 10px 40px;
+    padding: 6.25rem 0.625rem 2.5rem; // Converted pixel values to rem
+
     .header-container {
       width: 70%;
       margin: 0 auto;
       display: flex;
       align-items: center;
       flex-direction: column;
-      row-gap: 30px;
+      row-gap: 1.875rem;
       position: relative;
+
+      @include screen-breakpoints(phone) {
+        width: 95%;
+      }
       .search-div {
         display: flex;
         align-items: center;
-        border-radius: 6px;
-        border: 1px solid #d0d7de;
+        border-radius: 0.375rem;
+        border: 0.0625rem solid #d0d7de;
         background: #f6f8fa;
-        box-shadow: 0px 1px 0px 0px rgba(208, 215, 222, 0.2) inset;
+        box-shadow: 0px 0.0625rem 0px 0px rgba(208, 215, 222, 0.2) inset;
         input {
-          width: 700px;
-          padding: 10px;
+          width: 43.75rem;
+          padding: 0.625rem;
           outline: none;
           border: none;
           background-color: transparent;
-          font-size: 16px;
+          font-size: 1rem; // Converted pixel value to rem
+
+          @include screen-breakpoints(tablet-portrait) {
+            width: 31.25rem;
+          }
+
+          @include screen-breakpoints(phone) {
+            width: 100%;
+          }
         }
       }
 
@@ -36,9 +53,13 @@ section {
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
+        row-gap: 0.625rem;
+
+        @include screen-breakpoints(phone) {
+          width: 100%;
+        }
         h1 {
-          font-size: 37px;
+          font-size: 2.3125rem; // Converted pixel value to rem
         }
 
         p {
@@ -52,15 +73,15 @@ section {
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        padding: 10px;
+        padding: 0.625rem;
         span {
           cursor: pointer;
-          border-radius: 6px;
-          border: 1px solid #d0d7de;
-          box-shadow: 0px 1px 0px 0px rgba(208, 215, 222, 0.2) inset;
-          padding: 5px;
+          border-radius: 0.375rem;
+          border: 0.0625rem solid #d0d7de;
+          box-shadow: 0px 0.0625rem 0px 0px rgba(208, 215, 222, 0.2) inset;
+          padding: 0.3125rem;
           transition: all ease-in-out 600ms;
-          margin-top: 5px;
+          margin-top: 0.3125rem;
           &:hover {
             background-color: #e6e6f3;
           }
