@@ -8,10 +8,6 @@ import { VideosGalleryComponent } from './pages/videos-gallery/videos-gallery.co
 export const routes: Routes = [
   {
     path: '',
-    // loadChildren: () =>
-    //   import('./modules/main-module/main-module.module').then(
-    //     (m) => m.MainModuleModule
-    //   ),
     component: LandingPageComponent,
   },
   {

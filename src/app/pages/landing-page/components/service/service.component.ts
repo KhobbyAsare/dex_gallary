@@ -11,4 +11,11 @@ import { BrandNameSignalService } from '../../../../services/brandNameSignal/bra
 })
 export class ServiceComponent {
   public brandName = inject(BrandNameSignalService).brand_name();
+
+  lazyLoadVideo(event: any) {
+    const video = event.target;
+    video.src = video.dataset.src;
+    video.load();
+    video.play();
+  }
 }

@@ -26,8 +26,9 @@ import { videoList } from './card-videos';
 export class VideosGalleryComponent implements OnInit {
   public brandName = inject(BrandNameSignalService).brand_name();
   public tags = inject(TagsService).tags;
-
   searchQuery: string = '';
+  isPreview = false;
+  previewingVideo = '';
 
   cardVideo: {
     description: string;
@@ -43,5 +44,14 @@ export class VideosGalleryComponent implements OnInit {
 
   tagsValues(tag: string) {
     this.searchQuery = tag.toLowerCase();
+  }
+
+  getPreviewVideo(src: string) {
+    this.previewingVideo = src;
+    console.log(this.previewingVideo);
+  }
+
+  getPreviewStatus(status: boolean) {
+    this.isPreview = status;
   }
 }

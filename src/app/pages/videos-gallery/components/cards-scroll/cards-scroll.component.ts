@@ -10,12 +10,12 @@ import { cards } from './scroll-videos';
   styleUrl: './cards-scroll.component.scss',
 })
 export class CardsScrollComponent {
-lazyLoadVideo(event: any) {
+  lazyLoadVideo(event: any) {
     const video = event.target;
     video.src = video.dataset.src;
     video.load();
     video.play();
-}
+  }
   @ViewChild('scrollingCard') scrollingCard!: ElementRef;
   cards: {
     content: string;
@@ -34,8 +34,6 @@ lazyLoadVideo(event: any) {
       index,
       isHovered: false,
     }));
-
-    console.log(this.isHovered);
   }
 
   ngAfterViewInit() {
