@@ -1,0 +1,30 @@
+<div
+  class="card"
+  (mouseenter)="isVideoPlaying = true"
+  (mouseout)="isVideoPlaying = false"
+  (click)="getPreviewVideo(video()?.src)"
+>
+  <div class="card-image">
+    <div class="card-image">
+      @if(!isVideoPlaying){
+
+      <img
+        [src]="video()?.thumbnail"
+        alt="thumbnail"
+        [style.opacity]="isVideoPlaying ? '0' : '1'"
+      />
+      }@else {
+      <video
+        [autoplay]="true"
+        [muted]="true"
+        src="{{ video()?.src }}"
+        [style.opacity]="isVideoPlaying ? '1' : '0'"
+      ></video>
+      }
+    </div>
+    <!-- <div class="card-content" (mouseenter)="stopPropagation($event)" (mouseout)="stopPropagation($event)">
+      <h3>{{ video()?.title | titlecase }}</h3>
+      <p>{{ video()?.description }}</p>
+    </div> -->
+  </div>
+</div>

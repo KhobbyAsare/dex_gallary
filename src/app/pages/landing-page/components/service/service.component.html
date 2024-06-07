@@ -15,7 +15,7 @@
     <div class="content">
       <div class="service">
         <div class="gif-animation">
-          <iframe
+          <!-- <iframe
             width="560"
             height="315"
             src="https://www.youtube.com/embed/5puu3kN9l7c?autoplay=1&mute=1&playlist=5puu3kN9l7c&loop=1&controls=0&modestbranding=1"
@@ -24,7 +24,13 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
-          ></iframe>
+          ></iframe> -->
+          <video
+            (load)="lazyLoadVideo($event)"
+            [autoplay]="true"
+            [muted]="true"
+            src="../../../../../assets/landing-page/videos/y2mate.com - Google CEO Sundar Pichai and the Future of AI  The Circuit_720pFH.mp4"
+          ></video>
         </div>
         <div class="text">
           <h3>Seamless Interaction with Innovation</h3>
@@ -50,16 +56,12 @@
       </div>
       <div class="service">
         <div class="gif-animation">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/aZbHd4suAnQ?autoplay=1&mute=1&playlist=aZbHd4suAnQ&loop=1&controls=0&modestbranding=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          <video
+            (load)="lazyLoadVideo($event)"
+            [autoplay]="true"
+            [muted]="true"
+            src="../../../../../assets/Video-Galley/Apple March 2024 Event LEAKS - This Changes EVERYTHING...mp4"
+          ></video>
         </div>
 
         <div class="text">
@@ -86,13 +88,12 @@
       </div>
       <div class="service">
         <div class="gif-animation">
-          <iframe
-            src="https://www.youtube.com/embed/h3M4bm2EveM?autoplay=1&mute=1&playlist=h3M4bm2EveM&loop=1&controls=0&modestbranding=1"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          <video
+            (load)="lazyLoadVideo($event)"
+            [autoplay]="true"
+            [muted]="true"
+            src="../../../../../assets/landing-page/videos/y2mate.com - The Future of AI with GOOGLE CEO Sundar Pichai_720p.mp4"
+          ></video>
         </div>
         <div class="text">
           <h3>Interactive AI: Your Digital Docent</h3>

@@ -47,10 +47,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let currentRoute: string = localStorage.getItem('lastRoute') as string;
+    // let currentRoute: string = localStorage.getItem('lastRoute') as string;
 
-    if (currentRoute) {
-      this.route.navigateByUrl(currentRoute);
-    }
+    // if (currentRoute) {
+    //   this.route.navigateByUrl(currentRoute);
+    // }
   }
 }

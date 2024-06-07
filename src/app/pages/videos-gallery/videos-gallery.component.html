@@ -1,0 +1,123 @@
+<section>
+  <app-interactive-navigatio-bar></app-interactive-navigatio-bar>
+
+  <header>
+    <div class="header-container">
+      <div class="search-div">
+        <input
+          type="text"
+          placeholder="Search....."
+          [(ngModel)]="searchQuery"
+        />
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989t-1.96.35q-2.402 0-4.066-1.663T3.808 9.503T5.47 5.436t4.064-1.667t4.068 1.664T15.268 9.5q0 1.042-.369 2.017t-.97 1.668l6.262 6.261zM9.539 14.23q1.99 0 3.36-1.37t1.37-3.361t-1.37-3.36t-3.36-1.37t-3.361 1.37t-1.37 3.36t1.37 3.36t3.36 1.37"
+          />
+        </svg>
+      </div>
+
+      <!-- text -->
+      <div class="text-content">
+        <h1>Our Video Gallery</h1>
+      </div>
+    </div>
+
+    <div class="cards-scroll">
+      <app-cards-scroll></app-cards-scroll>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="search-wrapper">
+      <h1>
+        {{ searchQuery ? searchQuery : "Be Inpired" }}
+      </h1>
+    </div>
+
+    <div class="videoCards">
+      <app-video-card
+        *ngFor="let video of cardVideo"
+        [video]="video"
+        (currentVideoForPreview)="getPreviewVideo($event)"
+        (isPreviewing)="getPreviewStatus($event)"
+      ></app-video-card>
+    </div>
+  </div>
+</section>
+
+@if (isPreview) {
+<div class="preview-video">
+  <div class="container">
+    <div class="close-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30px"
+        height="30px"
+        viewBox="0 0 24 24"
+        (click)="isPreview = false"
+      >
+        <path
+          fill="#fff"
+          d="M12 10.586l-4.293-4.293a1 1 0 0 0-1.414 1.414L10.586 12l-4.293 4.293a1 1 0 1 0 1.414 1.414L12 13.414l4.293 4.293a1 1 0 0 0 1.414-1.414L13.414 12l4.293-4.293a1 1 0 0 0-1.414-1.414L12 10.586z"
+        />
+      </svg>
+    </div>
+    <div class="previewed-video-holder">
+      <video
+        controls="true"
+        [autoplay]="true"
+        src="{{ previewingVideo }}"
+      ></video>
+    </div>
+
+    <div class="content-details">
+      <div class="content-header">
+        <div class="profile">
+          <img
+            src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="profile-image"
+          />
+        </div>
+        <div class="video-title">
+          <h1>Apple Macbook Pro</h1>
+          <div class="user-and-ratings">
+            <p class="uploader-profile">Harvey Ross</p>
+            <div class="uploading-duration"><p>2 months ago</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-description">
+        <h2 class="description-text">Description</h2>
+        <p class="decription-content">
+          Introducing the new Apple MacBook Pro! 🍎💻 Experience the power and
+          performance of the latest generation MacBook Pro, featuring a stunning
+          Retina display, blazing-fast M1 chip, and all-day battery life.
+          Whether you're a creative professional, a student, or a business user,
+          the MacBook Pro is designed to meet your needs with its sleek design,
+          advanced features, and cutting-edge technology. From editing videos
+          and designing graphics to running demanding software and multitasking
+          with ease, the MacBook Pro is the ultimate tool for productivity and
+          creativity. Discover the future of computing with the Apple MacBook
+          Pro. Order yours today and elevate your work to new heights!
+        </p>
+      </div>
+
+      <div class="tags">
+        <h2 class="tag-text">Tags</h2>
+        <div class="tag-content">
+          <p class="tag">Apple</p>
+          <p class="tag">Macbook</p>
+          <p class="tag">Pro</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
