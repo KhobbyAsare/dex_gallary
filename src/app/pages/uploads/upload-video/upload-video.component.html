@@ -1,0 +1,232 @@
+<div class="upload-video">
+  <header>
+    <div class="container">
+      <div class="logo" routerLink="/">{{ brandName }}</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="video-side">
+      <div class="video-preview-holder">
+        <div class="video-wrapper">
+          <div class="video-overlay">
+            <div class="video-upload" *ngIf="!videoUrl">
+              <input
+                type="file"
+                accept="Video/*"
+                class="video-file-input"
+                (change)="onFileSelected($event)"
+              />
+              <div class="text">
+                <p class="drag-text">Drag and drop video or</p>
+                <p class="click-text">
+                  {{
+                    imageFile
+                      ? "Click to change video"
+                      : "Click to upload video"
+                  }}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30px"
+                    height="30px"
+                    viewBox="0 0 24 24"
+                  >
+                    <g fill="none">
+                      <path
+                        fill="#00008b"
+                        fill-opacity="0.25"
+                        fill-rule="evenodd"
+                        d="M12 21a9 9 0 1 0 0-18a9 9 0 0 0 0 18M9.737 7.868l6.474 3.238a1 1 0 0 1 0 1.789l-6.474 3.237A1.2 1.2 0 0 1 8 15.058V8.943a1.2 1.2 0 0 1 1.737-1.074"
+                        clip-rule="evenodd"
+                      />
+                      <path
+                        stroke="#00008b"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.211 11.106L9.737 7.868A1.2 1.2 0 0 0 8 8.942v6.116a1.2 1.2 0 0 0 1.737 1.074l6.474-3.238a1 1 0 0 0 0-1.788"
+                      />
+                      <circle cx="12" cy="12" r="9" stroke="#00008b" />
+                    </g>
+                  </svg>
+                </p>
+              </div>
+            </div>
+          </div>
+          <video
+            *ngIf="videoUrl"
+            controls="true"
+            [muted]="true"
+            [src]="videoUrl"
+            alt="Uploaded Image"
+            autoplay="true"
+          ></video>
+        </div>
+      </div>
+      <div class="change-video-btn-container">
+        <div class="change-video-upload" *ngIf="videoUrl">
+          <input
+            type="file"
+            accept="Video/*"
+            class="video-file-input"
+            (change)="onFileSelected($event)"
+          />
+          Change Upload video
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26px"
+            height="26px"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none">
+              <path
+                fill="#00008b"
+                fill-opacity="0.25"
+                fill-rule="evenodd"
+                d="M12 21a9 9 0 1 0 0-18a9 9 0 0 0 0 18M9.737 7.868l6.474 3.238a1 1 0 0 1 0 1.789l-6.474 3.237A1.2 1.2 0 0 1 8 15.058V8.943a1.2 1.2 0 0 1 1.737-1.074"
+                clip-rule="evenodd"
+              />
+              <path
+                stroke="#00008b"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.211 11.106L9.737 7.868A1.2 1.2 0 0 0 8 8.942v6.116a1.2 1.2 0 0 0 1.737 1.074l6.474-3.238a1 1 0 0 0 0-1.788"
+              />
+              <circle cx="12" cy="12" r="9" stroke="#00008b" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-wrapper">
+      <form (submit)="onSubmit()" [formGroup]="uploadingDeatils">
+        <div
+          class="thumbnail-holder"
+          [style.backgroundImage]="'url(' + imageUrl + ')'"
+        >
+          <div class="thumbnail-overlay">
+            <div class="thumbnail">
+              <input
+                class="image-file-input"
+                type="file"
+                accept="image/*"
+                (change)="onImageFileSelected($event)"
+              />
+              <div class="text">
+                <p class="drag-text">Drag and drop image or</p>
+                <p class="click-text">
+                  {{
+                    imageFile
+                      ? "Click to change image"
+                      : "Click to upload thumbnail"
+                  }}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="#00008b"
+                      d="M17 4a2 2 0 1 0 0 4a2 2 0 0 0 0-4m-4 2a4 4 0 1 1 8 0a4 4 0 0 1-8 0M9.928 8.124l4.419 7.015l2.581-3.975L23.966 22H1.188zm0 3.752L4.812 20h15.47l-3.354-5.164l-2.607 4.014z"
+                    />
+                  </svg>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="text"
+          name="videoTitle"
+          placeholder="Video Title"
+          formControlName="videoTitle"
+          [value]="fileName"
+        />
+
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Description"
+          formControlName="description"
+          required
+          (input)="changeDescription($event)"
+        ></textarea>
+
+        <input
+          type="text"
+          name="links"
+          placeholder="Links (Optional)"
+          formControlName="links"
+        />
+
+        <div class="tag">
+          <p>Select Tags:</p>
+          <div class="tags-holder">
+            @for (tag of tags; track $index) {
+            <span
+              (click)="selectTag(tag)"
+              [style.backgroundColor]="
+                selectedTags.includes(tag.toLowerCase()) ? '#fff' : '#f6f8fa77'
+              "
+              >{{ tag | titlecase }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24px"
+                height="24px"
+                viewBox="0 0 21 21"
+                *ngIf="selectedTags.includes(tag.toLowerCase())"
+                (click)="deSelectTag(tag, $event)"
+              >
+                <path
+                  fill="none"
+                  stroke="#666666"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m7.5 7.5l6 6m0-6l-6 6"
+                />
+              </svg>
+            </span>
+            }<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30px"
+              height="30px"
+              viewBox="0 0 24 24"
+              (click)="isTagInput = true"
+            >
+              <g fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  fill="#00008b"
+                  fill-opacity="0.25"
+                />
+                <path
+                  stroke="#00008b"
+                  stroke-linecap="square"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M12 8v8m4-4H8"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        @if (isTagInput) {
+        <input
+          type="text"
+          placeholder="Add to selected tags"
+          (keydown)="getTag($event)"
+          (blur)="isTagInput = false"
+        />
+        }
+
+        <button class="submit-btn" type="submit" [disabled]="!checkValidity()">
+          Proceed
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

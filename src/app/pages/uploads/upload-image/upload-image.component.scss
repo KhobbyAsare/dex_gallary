@@ -1,10 +1,10 @@
-@import  "all-sass-imports";
+@import "all-sass-imports";
 
 $base-font-size: 16px;
 
 .upload-image {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   @include screen-breakpoints(tablet-portrait) {
     height: 100%;
@@ -40,10 +40,7 @@ $base-font-size: 16px;
         cursor: pointer;
       }
 
-      h1 {
-        font-size: 1.5rem;
-        color: $primary_color;
-      }
+     
     }
   }
 
@@ -67,12 +64,124 @@ $base-font-size: 16px;
       padding: 1.25rem 1.25rem;
     }
 
+    .image-preview-holder {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      @include screen-breakpoints(tablet-portrait) {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .image-wrapper {
+        height: 31.25rem;
+        overflow: hidden;
+        border-radius: 0.625rem;
+        margin: 0 auto;
+        width: 100%;
+        background-color: #ffffff51;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+
+        @include screen-breakpoints(tablet-portrait) {
+          width: 95%;
+          margin: 0 auto;
+          
+        }
+
+        @include screen-breakpoints(phone) {
+          width: 95%;
+          margin: 0 auto;
+          height: 25rem;
+        }
+
+        @include screen-breakpoints(desktop) {
+          width: 80%;
+        }
+
+        input {
+          position: absolute;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        .text {
+          flex-direction: column;
+          display: flex;
+          align-items: center;
+          row-gap: 0.625rem;
+          .drag-text {
+            font-weight: 600;
+            font-size: 1.5rem;
+          }
+
+          .click-text {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+
+      .change-btn-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        .change-image-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 220px;
+          height: 2.25rem;
+          padding: 0 0.625rem;
+          box-shadow: 0px 0.0625rem 0px 0px rgba(208, 215, 222, 0.2) inset;
+          text-align: center;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          border-radius: 0.375rem;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+          background-color: #f6f8fa;
+          outline: none;
+          border: none;
+          position: relative;
+          input {
+            position: absolute;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+          }
+
+          &:hover {
+            background-color: #d0d7de;
+          }
+        }
+      }
+    }
+
     form {
       display: flex;
       flex-direction: column;
       justify-content: center;
       row-gap: 0.625rem;
-      width: 31.25rem;
+      width: 38%;
 
       @include screen-breakpoints(tablet-portrait) {
         width: 90%;
@@ -167,6 +276,8 @@ $base-font-size: 16px;
         transition: background-color 0.3s ease;
         background-color: $primary_color;
         transition: all ease-in-out 0.3s;
+        margin-top: 2rem;
+
         &:disabled {
           background-color: #d0d7de;
           cursor: not-allowed;
@@ -180,45 +291,6 @@ $base-font-size: 16px;
         &:hover {
           background-color: darken($color: $primary_color, $amount: 10);
         }
-      }
-    }
-  }
-
-  .image-preview-holder {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .image-wrapper {
-      height: 31.25rem;
-      overflow: hidden;
-      border-radius: 0.625rem;
-      margin: 0 auto;
-      width: 50%;
-
-      @include screen-breakpoints(tablet-portrait) {
-        width: 90%;
-        margin: 0 auto;
-        background-color: rebeccapurple;
-      }
-
-      @include screen-breakpoints(phone) {
-        width: 95%;
-        margin: 0 auto;
-        height: 25rem;
-      }
-
-      @include screen-breakpoints(desktop) {
-        width: 80%;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
       }
     }
   }
