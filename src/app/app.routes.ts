@@ -4,6 +4,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { AuthComponent } from './pages/auth/auth.component';
 import { VideosGalleryComponent } from './pages/videos-gallery/videos-gallery.component';
 import { authGuardGuard } from './Guard/auth-guard.guard';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,9 @@ export const routes: Routes = [
         (m) => m.UploadPageModule
       ),
     canActivate: [authGuardGuard],
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
   },
 ];
