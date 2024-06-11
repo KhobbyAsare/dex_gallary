@@ -8,6 +8,18 @@ section {
   justify-content: center;
   padding-top: 2rem;
 
+  @include screen-breakpoints(desktop) {
+    padding-top: 8rem;
+  }
+
+  @include screen-breakpoints(phone) {
+    padding-top: 8rem;
+  }
+
+  @include screen-breakpoints(tablet-portrait) {
+    padding-top: 8rem;
+  }
+
   .container {
     text-align: center;
     flex-direction: column;
@@ -15,9 +27,19 @@ section {
     row-gap: 1.25rem;
     width: 70%;
 
-    @include screen-breakpoints(phone) {
-      width: 4.75rem;
+    @include screen-breakpoints(desktop) {
+      width: 80%;
     }
+
+    @include screen-breakpoints(tablet-portrait) {
+      width: 80%;
+      text-align: left;
+    }
+
+    @include screen-breakpoints(phone) {
+      width: 95%;
+    }
+
     h1 {
       font-size: 3.0625rem;
       line-height: 3.625rem;
@@ -30,7 +52,7 @@ section {
     }
 
     p {
-      font-size: 1.5rem;
+       font-size: 1.2rem;
 
       @include screen-breakpoints(phone) {
         font-size: 1.2rem;

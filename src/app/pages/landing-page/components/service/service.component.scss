@@ -15,6 +15,10 @@ section {
       width: 100%;
     }
 
+    @include screen-breakpoints(tablet-portrait) {
+      width: 90%;
+    }
+
     header {
       text-align: center;
       margin: 0 auto;
@@ -22,6 +26,11 @@ section {
       flex-direction: column;
       row-gap: 1.429rem;
       width: 80%;
+
+      @include screen-breakpoints(tablet-portrait) {
+        width: 90%;
+        text-align: left;
+      }
 
       @include screen-breakpoints(phone) {
         width: 95%;
@@ -38,8 +47,12 @@ section {
         }
       }
       p {
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: 1.2rem;
+
+        @include screen-breakpoints(tablet-portrait) {
+          font-size: 1.4rem;
+          text-align: left;
+        }
 
         @include screen-breakpoints(phone) {
           font-size: 1.1rem;
@@ -57,21 +70,22 @@ section {
       .service {
         display: flex;
         align-items: center;
-
         flex-direction: row;
         column-gap: 1.429rem;
 
-        @include screen-breakpoints(phone) {
+        @include screen-breakpoints(tablet-portrait) {
+          width: 100%;
           flex-direction: column;
           row-gap: 1.429rem;
         }
+
+        
 
         .gif-animation {
           height: 25.714rem;
           border-radius: 0.571rem;
           position: relative;
           overflow: hidden;
-          // padding-top: 56.25%; /* 16:9 Aspect Ratio */
           transition: all ease-in-out 600ms;
           width: 50%;
 
@@ -80,6 +94,10 @@ section {
           }
 
           @include screen-breakpoints(phone) {
+            width: 95%;
+          }
+
+          @include screen-breakpoints(tablet-portrait) {
             width: 95%;
           }
 
@@ -103,6 +121,10 @@ section {
           row-gap: 0.714rem;
           width: 50%;
 
+          @include screen-breakpoints(tablet-portrait) {
+            width: 95%;
+          }
+
           @include screen-breakpoints(phone) {
             width: 95%;
           }
@@ -120,6 +142,10 @@ section {
 
             @include screen-breakpoints(phone) {
               font-size: 1.1rem;
+            }
+
+            @include screen-breakpoints(tablet-portrait) {
+              font-size: 1.2rem;
             }
 
             a {

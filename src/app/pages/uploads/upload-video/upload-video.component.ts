@@ -1,12 +1,17 @@
-import { CommonModule, TitleCasePipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BrandNameSignalService } from '../../../services/brandNameSignal/brand-name-signal.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagsService } from '../../../services/tags/tags.service';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-upload-image',
+  selector: 'app-upload-video',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,22 +20,44 @@ import { RouterModule } from '@angular/router';
     TitleCasePipe,
     RouterModule,
   ],
-  templateUrl: './upload-image.component.html',
-  styleUrl: './upload-image.component.scss',
+  templateUrl: './upload-video.component.html',
+  styleUrl: './upload-video.component.scss',
 })
-export class UploadImageComponent implements OnInit {
+export class UploadVideoComponent {
   public brandName = inject(BrandNameSignalService).brand_name();
   private generaltags = inject(TagsService).tags;
+  private fb = inject(FormBuilder);
   selectedFile: File | null = null;
+  imageFile: File | null = null;
   public tags: string[] = [];
   isTagInput: boolean = false;
+
+  constructor() {}
 
   // data collected
   selectedTags: string[] = [];
   fileName: string = '';
-  imageUrl: string | ArrayBuffer | null = null;
   videoUrl: string | ArrayBuffer | null = null;
+  imageUrl: string | ArrayBuffer | null = null;
   description: string = '';
+
+  // TODO: Add the form group
+  // MUST HAVE: videoTitle, description, links from user uploading
+  // OPTIONAL: tags
+  // VALIDATION: videoTitle, description, links are required
+  // GET: the video url from the videoUrl variable
+
+  // TODO ON MY SIDE:
+  // MUST: get the user name from the user service/ auth service
+  // MUST: get the user id from the user service/ auth service
+  // MUST: get the profile picture from the user service/ auth service
+  // GET: date uploaded now -< new Date().toISOString()
+
+  uploadingDeatils = this.fb.group({
+    videoTitle: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    links: ['', [Validators.required]],
+  });
 
   ngOnInit(): void {
     this.tags = [...this.generaltags];
@@ -76,10 +103,22 @@ export class UploadImageComponent implements OnInit {
 
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => (this.imageUrl = reader.result);
+      reader.onload = (e) => (this.videoUrl = reader.result);
       reader.readAsDataURL(file);
       this.checkValidity();
       this.fileName = this.getImageFillName(file.name);
+    }
+  }
+
+  onImageFileSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0]; // Add null check here
+    this.imageFile = file ?? null; // Add null check here
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => (this.imageUrl = reader.result);
+      reader.readAsDataURL(file);
+      this.checkValidity();
     }
   }
 
@@ -106,7 +145,7 @@ export class UploadImageComponent implements OnInit {
       filename: this.fileName,
       imageDescription: this.description,
       tags: this.selectedTags,
-      image: this.imageUrl,
+      image: this.videoUrl,
     };
     console.log('Submitted', data);
   }

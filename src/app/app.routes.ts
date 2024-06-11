@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { UploadImageComponent } from './pages/uploads/upload-image/upload-image.component';
 import { VideosGalleryComponent } from './pages/videos-gallery/videos-gallery.component';
+import { authGuardGuard } from './Guard/auth-guard.guard';
 
 export const routes: Routes = [
   {
@@ -23,7 +23,11 @@ export const routes: Routes = [
     component: AuthComponent,
   },
   {
-    path: 'upload-image',
-    component: UploadImageComponent,
+    path: 'upload',
+    loadChildren: () =>
+      import('./modules/upload-page/upload-page.module').then(
+        (m) => m.UploadPageModule
+      ),
+    canActivate: [authGuardGuard],
   },
 ];
