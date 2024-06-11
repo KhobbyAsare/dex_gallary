@@ -1,0 +1,205 @@
+<app-profile-page-navigation-bar></app-profile-page-navigation-bar>
+
+<section>
+  <header>
+    <div class="banner"></div>
+    <div class="profile-details">
+      <div class="container">
+        <header>
+          <div class="profile-image">
+            <img
+              src="{{ userProfile.userProfileImage() }}"
+              alt="Profile Image"
+            />
+            <p class="emoji">😉</p>
+          </div>
+          <div class="profile-info">
+            <h1>{{ user.name }}</h1>
+            <div class="link">
+              <a
+                href="{{ user.link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ user.link }}</a
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 50 50"
+              >
+                <g
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke="#344054"
+                    d="M30.208 19.792a7.375 7.375 0 0 1 0 10.416L19.792 40.625a7.375 7.375 0 0 1-10.417 0a7.375 7.375 0 0 1 0-10.417"
+                  />
+                  <path
+                    stroke="#306cfe"
+                    d="M40.625 19.792a7.375 7.375 0 0 0 0-10.417a7.375 7.375 0 0 0-10.417 0L19.792 19.792a7.375 7.375 0 0 0 0 10.416v0"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </header>
+
+        <div class="profile-content">
+          <div class="profile-content-header">
+            <div class="header-text">
+              <h3>Personalize your profile</h3>
+              <p>
+                Let's get to know you better. Update your profile photo and
+                details here.
+              </p>
+            </div>
+            <div class="buttons">
+              <button>Cancel</button>
+              <button class="save-btn">Save Changes</button>
+            </div>
+          </div>
+
+          <div class="profile-content-holder">
+            <div class="username-email-link">
+              <div class="public-profile-text">
+                <h4>Public Profile</h4>
+                <p>
+                  Your profile is where your digital presence comes alive. Set
+                  your unique username to be recognized, link your email for
+                  communications, and add a personal link to showcase your work
+                  or passion. It's concise, it's you.
+                </p>
+              </div>
+              <div class="user-profile-content">
+                <form>
+                  <input
+                    type="text"
+                    id="username"
+                    placeholder="Username"
+                    value="{{ user.name }}"
+                  />
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    value="{{ user.email }}"
+                  />
+
+                  <input
+                    type="text"
+                    type="link"
+                    placeholder="Link"
+                    value="{{ user.link }}"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-content-holder">
+            <div class="profile-image">
+              <div class="public-profile-text">
+                <h4>Change Profile Image</h4>
+                <p>
+                  Refresh your digital persona with a new profile image. This is
+                  the spot to upload a picture that represents you best. Whether
+                  it’s a recent professional headshot or a casual snapshot, make
+                  sure it’s uniquely you.
+                </p>
+              </div>
+              <div class="user-profile-content">
+                <div class="profile-image">
+                  <img
+                    src="{{ imageUrl || userProfile.userProfileImage() }}"
+                    alt="Profile Image"
+                  />
+                </div>
+                <button class="image-btn">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    (change)="onFileSelected($event)"
+                  />
+                  Upload Image
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="#00008b"
+                      d="M17 4a2 2 0 1 0 0 4a2 2 0 0 0 0-4m-4 2a4 4 0 1 1 8 0a4 4 0 0 1-8 0M9.928 8.124l4.419 7.015l2.581-3.975L23.966 22H1.188zm0 3.752L4.812 20h15.47l-3.354-5.164l-2.607 4.014z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-content-holder">
+            <div class="techSpace">
+              <div class="techSpace-text">
+                <h4>Explore Your Tech Persona</h4>
+                <p>
+                  Dive into the tech universe and showcase your specialty. Are
+                  you the architect of code, a visionary designer, a maestro of
+                  management, or are you carving a new niche? Share your tech
+                  identity and inspire connections.
+                </p>
+              </div>
+              <div class="techSpace-input">
+                <form>
+                  <input
+                    type="text"
+                    id="tech-space"
+                    placeholder="Your Tech Stack"
+                    value="{{ user.techSpace }}"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-content-holder">
+            <div class="connect">
+              <div class="connect-text">
+                <h4>Connect Your Worlds</h4>
+                <p>
+                  Link up your social spheres and broaden your network. From
+                  LinkedIn to Twitter, GitHub to Dribbble, this is your hub for
+                  all the platforms where you make your mark. Share your
+                  profiles and let the world follow your digital footprint.
+                </p>
+              </div>
+              <div class="connect-content">
+                <form>
+                  <input type="url" id="GitHub" placeholder="GitHub.." />
+
+                  <input type="url" id="Twitter" placeholder="Twitter.." />
+
+                  <input
+                    type="url"
+                    id="Dribbble"
+                    placeholder="Dribbble.."
+                   
+                  />
+                  <input
+                    type="url"
+                    id="instagram"
+                    placeholder="Instagram.."
+                   
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</section>

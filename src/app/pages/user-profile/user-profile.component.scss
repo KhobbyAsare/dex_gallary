@@ -1,0 +1,438 @@
+@import "all-sass-imports.scss";
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+
+  @include screen-breakpoints(tablet-portrait) {
+    width: 90%;
+  }
+}
+
+a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
+
+p {
+  color: #b3b3b3;
+  font-size: 15px;
+}
+
+input {
+  font: size 0.9em;
+  outline: none;
+  border: none;
+  width: 50%;
+  display: flex;
+  height: 2rem;
+  padding: 0.375rem 0.8rem 0.375rem 0.8125rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.375rem;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  box-shadow: 0px 1px 0px 0px rgba(208, 215, 222, 0.2) inset;
+  &:focus {
+    border: 1px solid $primary_color;
+    background: #fff;
+    box-shadow: 0px 1px 0px 0px rgba(0, 123, 255, 0.25) inset;
+  }
+}
+
+section {
+  header {
+    .banner {
+      background-color: #f5f5f5;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      height: 300px;
+      width: 100%;
+
+      @include screen-breakpoints(phone) {
+        height: 200px;
+      }
+    }
+  }
+  .profile-details {
+    background-color: $primary_white;
+
+    .container {
+      flex-direction: column;
+      display: flex;
+      row-gap: 50px;
+      padding-bottom: 50px;
+      header {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+
+        @include screen-breakpoints(phone) {
+          column-gap: 10px;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .profile-image {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background-color: #f5f5f5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: -40px;
+          border: 3px solid #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: relative;
+
+          @include screen-breakpoints(phone) {
+            width: 120px;
+            height: 120px;
+            margin-top: -40px;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .emoji {
+            position: absolute;
+            right: 20px;
+            background-color: #ffffffce;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            bottom: 20px;
+            z-index: 3;
+            @include display-flex(row, center, center);
+
+            @include screen-breakpoints(phone) {
+              display: none;
+            }
+          }
+        }
+
+        .profile-info {
+          margin-bottom: 10px;
+          h1 {
+            font-size: 26px;
+            font-weight: bold;
+          }
+          .link {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            font-size: 13px;
+            a {
+              &::after {
+                content: "";
+                display: block;
+                width: 0;
+                height: 1px;
+                background-color: #b3b3b3;
+              }
+
+              &:hover {
+                &::after {
+                  width: 100%;
+                  transition: width ease-in-out 600ms;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .profile-content {
+        flex-direction: column;
+        display: flex;
+        row-gap: 60px;
+
+        .profile-content-header {
+          @include display-flex(row, space-between, center);
+          @include screen-breakpoints(phone) {
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: 20px;
+          }
+          .header-text {
+            width: 38%;
+
+            @include screen-breakpoints(phone) {
+              width: 100% !important;
+            }
+
+            @include screen-breakpoints(tablet-portrait) {
+              width: 50%;
+            }
+          }
+          .buttons {
+            @include display-flex(row, center, center);
+            column-gap: 10px;
+
+            @include screen-breakpoints(phone) {
+              width: 100%;
+            }
+            button {
+              font-size: 0.875rem;
+              font-weight: 500;
+              padding: 7px 15px;
+              border: none;
+              outline: none;
+              border-radius: 0.375rem;
+              border: 1px solid #d0d7de;
+              background: #f6f8fa;
+              box-shadow: 0px 1px 0px 0px rgba(208, 215, 222, 0.2) inset;
+              color: #000;
+              border-radius: 5px;
+              cursor: pointer;
+              transition: all ease-in-out 600ms;
+
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+
+              &:hover {
+                background-color: lighten(#fff, 0.5s);
+              }
+            }
+
+            .save-btn {
+              background-color: $primary_color;
+              color: $primary_white;
+              transition: all ease-in-out 600ms;
+              &:hover {
+                background-color: lighten($primary_color, 10%);
+              }
+            }
+          }
+        }
+
+        .profile-content-holder {
+          border-top: 1px solid #f5f5f5;
+          padding: 20px 0px;
+
+          .username-email-link {
+            column-gap: 10px;
+            @include display-flex(row, space-between, center);
+            @include screen-breakpoints(phone) {
+              flex-direction: column;
+              align-items: flex-start;
+              row-gap: 20px;
+            }
+
+            .public-profile-text {
+              width: 38%;
+              @include display-flex(column, center, flex-start);
+
+              @include screen-breakpoints(tablet-portrait) {
+                width: 50%;
+              }
+
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+
+              h4 {
+                font-size: 18px;
+                font-weight: bold;
+              }
+            }
+            .user-profile-content {
+              flex: 1;
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+
+              form {
+                @include display-flex(column, center, center);
+                row-gap: 10px;
+
+                @include screen-breakpoints(phone) {
+                  width: 100%;
+                }
+
+                input {
+                  @include screen-breakpoints(tablet-portrait) {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+
+          .profile-image {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            @include screen-breakpoints(phone) {
+              flex-direction: column;
+              align-items: flex-start;
+              width: 100%;
+              row-gap: 20px;
+            }
+
+            .public-profile-text {
+              width: 38%;
+
+              @include screen-breakpoints(tablet-portrait) {
+                width: 50%;
+              }
+
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+            }
+
+            .user-profile-content {
+              display: flex;
+              align-items: center;
+              column-gap: 20px;
+              flex: 1;
+              justify-content: center;
+              .profile-image {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: #f5f5f5;
+                overflow: hidden;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+
+              .image-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 220px;
+                height: 100px;
+                padding: 0 0.625rem;
+                box-shadow: 0px 0.0625rem 0px 0px rgba(208, 215, 222, 0.2) inset;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                border-radius: 0.375rem;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                background-color: #f6f8fa;
+                outline: none;
+                border: none;
+                position: relative;
+                input {
+                  position: absolute;
+                  margin: 0;
+                  width: 100%;
+                  height: 100%;
+                  opacity: 0;
+                  cursor: pointer;
+                }
+
+                &:hover {
+                  background-color: #dddee03d;
+                }
+              }
+            }
+          }
+
+          .techSpace {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+
+            @include screen-breakpoints(phone) {
+              flex-direction: column;
+              align-items: flex-start;
+              width: 100%;
+              row-gap: 20px;
+            }
+
+            .techSpace-text {
+              width: 38%;
+
+              @include screen-breakpoints(tablet-portrait) {
+                width: 50%;
+              }
+
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+            }
+            .techSpace-input {
+              flex: 1;
+              @include display-flex(row, center, center);
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+              form {
+                width: 100%;
+                height: 100%;
+                @include display-flex(row, center, center);
+
+                @include screen-breakpoints(phone) {
+                  width: 100%;
+                }
+
+                input {
+                  @include screen-breakpoints(tablet-portrait) {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+
+          .connect {
+            column-gap: 10px;
+            @include display-flex(row, space-between, center);
+            @include screen-breakpoints(phone) {
+              flex-direction: column;
+              align-items: flex-start;
+              width: 100%;
+              row-gap: 20px;
+            }
+            .connect-text {
+              width: 38%;
+              @include display-flex(column, center, flex-start);
+
+              @include screen-breakpoints(tablet-portrait) {
+                width: 50%;
+              }
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+
+              h4 {
+                font-size: 18px;
+                font-weight: bold;
+              }
+            }
+            .connect-content {
+              flex: 1;
+              @include screen-breakpoints(phone) {
+                width: 100%;
+              }
+
+              form {
+                @include display-flex(column, center, center);
+                row-gap: 10px;
+
+                input {
+                  @include screen-breakpoints(tablet-portrait) {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
